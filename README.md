@@ -30,8 +30,7 @@ This project demonstrates how AI agents can autonomously:
 
 → bridging the gap between raw data and reliable intelligence.
 
-> [!NOTE]
-> *👉 Judges LOVE this section*
+
 
 ---
 
@@ -169,8 +168,7 @@ graph TD
 - **Multi-step reasoning** using LLMs
 - **Dockerized** for reproducible execution
 
-> [!NOTE]
-> *👉 This helps judges score you faster*
+
 
 ---
 
