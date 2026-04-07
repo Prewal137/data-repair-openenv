@@ -183,5 +183,5 @@ Built for **scalability**, **modularity**, and **pixel-perfect evaluation**.
 This project is licensed under the **MIT License** - see the LICENSE file for details.
 
 ---
-*Maintained by Prewal137.*
+*Maintained by Prewal137 and SnehaShetty-18.*
 
