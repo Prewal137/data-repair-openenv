@@ -1,217 +1,146 @@
 # 🚀 Data Repair OpenEnv
 
-AI Environment for Dataset Cleaning & Repair
+<p align="center">
+  <b>Advanced AI Environment for Dataset Cleaning & Repair</b><br>
+  <i>Empowering AI agents to detect, fix, and decide on data quality at scale.</i>
+</p>
 
 ---
 
 ## 📌 Overview
 
-**Data Repair OpenEnv** is a custom AI training environment designed to simulate real-world dataset cleaning tasks.
-It enables AI agents to **detect errors, fix data issues, and make intelligent decisions** through structured interactions.
+**Data Repair OpenEnv** is a cutting-edge, custom AI training environment designed to simulate real-world data cleaning challenges. It provides a structured sandbox where AI agents can interact with "dirty" datasets to identify errors and perform repairs using natural language and logic.
 
-This project is built following OpenEnv standards with:
+Built on the **OpenEnv** standard, this project ensures high reliability, reproducibility, and a clear path from observation to reward.
 
-* Typed models (Observation, Action, Reward)
-* Multi-level tasks (easy → medium → hard)
-* Deterministic reward system
-* Docker-based execution
+> [!TIP]
+> This environment is ideal for testing LLM reasoning capabilities in data engineering and quality assurance workflows.
 
 ---
 
-## 🎯 Problem Statement
+## 🎯 The Challenge
 
-Real-world datasets often contain:
+Real-world datasets are rarely perfect. They are often plagued by:
+- ❌ **Missing Values**: Null or empty entries in critical fields.
+- ❌ **Invalid Data**: Semantic errors like negative ages or incorrect types.
+- ❌ **Inconsistency**: Mismatched formats across columns.
 
-* Missing values
-* Invalid entries (e.g., negative values, wrong data types)
-* Inconsistent formats
-
-This environment simulates such scenarios and evaluates how well an AI agent can:
-
-1. Detect issues
-2. Repair data
-3. Decide optimal cleaning strategies
+Our environment evaluates an agent's ability to navigate these issues across three core phases: **Detection**, **Repair**, and **Strategy Optimization**.
 
 ---
 
 ## 🧠 Key Features
 
-### ✅ 1. Structured Environment
+### 🏛️ Structured Architecture
+- Fully compliant with **OpenEnv standards**.
+- Clean API with `reset()`, `step()`, and `state()` methods.
+- Heavily typed models for Observations, Actions, and Rewards.
 
-* Fully compliant OpenEnv setup
-* Supports `reset()`, `step()`, and `state()`
+### 📈 Multi-Level Progression
+| Level | Task Name | Objective |
+| :--- | :--- | :--- |
+| 🟢 **Easy** | **Issue Detection** | Identify invalid data types and missing fields. |
+| 🟡 **Medium**| **Dataset Repair** | Perform row-level corrections and data imputation. |
+| 🔴 **Hard** | **Strategy Decision** | Choose the most efficient global cleaning policy. |
 
----
-
-### ✅ 2. Multi-Level Tasks
-
-| Level     | Objective                |
-| --------- | ------------------------ |
-| 🟢 Easy   | Detect data issues       |
-| 🟡 Medium | Fix dataset              |
-| 🔴 Hard   | Decide cleaning strategy |
-
----
-
-### ✅ 3. Intelligent Grading System
-
-* Deterministic scoring (0.0 → 1.0)
-* Partial rewards
-* Flexible natural language evaluation
-
----
-
-### ✅ 4. Realistic AI Interaction
-
-* Uses LLM via OpenAI-compatible API
-* Handles natural language responses
-* Simulates real-world data cleaning workflows
-
----
-
-### ✅ 5. Docker Support
-
-* Fully containerized
-* Reproducible execution
-* Easy deployment
+### ⚖️ Intelligent Grading
+- **Deterministic Rewards**: Mathematical scoring from `0.0` to `1.0`.
+- **Partial Credit**: Agents are rewarded for partial success, encouraging iterative improvement.
+- **NLP Evaluation**: Flexible logic that understands natural language descriptions of data issues.
 
 ---
 
 ## 🏗️ Project Structure
 
-```
+```bash
 data-repair-openenv/
-│
 ├── my_env/
-│   ├── env.py          # Core environment (step/reset/state)
-│   ├── models.py       # Observation, Action, Reward
-│   ├── tasks.py        # Task definitions
-│   ├── graders.py      # Reward logic
-│
-├── inference.py        # Main execution script
-├── openenv.yaml        # Environment metadata
-├── Dockerfile          # Container setup
-├── requirements.txt    # Dependencies
-├── README.md           # Project documentation
+│   ├── env.py          # ⚙️ Core environment logic
+│   ├── models.py       # 🧩 Pydantic models (Obs/Action/Reward)
+│   ├── tasks.py        # 📋 Dataset & Task definitions
+│   ├── graders.py      # ⚖️ Reward & Scoring algorithms
+├── inference.py        # 🚀 Main execution & LLM bridge
+├── openenv.yaml        # 📝 Metadata configuration
+├── Dockerfile          # 🐳 Containerization
+├── requirements.txt    # 📦 Python dependencies
+└── README.md           # 📖 Project documentation
 ```
 
 ---
 
-## ⚙️ Setup Instructions
+## ⚙️ Quick Start
 
-### 🔹 1. Clone Repository
-
+### 1️⃣ Clone & Enter
 ```bash
 git clone <your-repo-link>
 cd data-repair-openenv
 ```
 
----
-
-### 🔹 2. Install Dependencies
-
+### 2️⃣ Environment Setup
+We recommend using a virtual environment.
 ```bash
 pip install -r requirements.txt
 ```
 
----
-
-### 🔹 3. Create `.env` File
-
+### 3️⃣ Configure Secrets
+Create a `.env` file in the root directory:
 ```env
 HF_TOKEN=your_token_here
 API_BASE_URL=https://router.huggingface.co/v1
 MODEL_NAME=Qwen/Qwen2.5-72B-Instruct
 ```
 
----
-
-### 🔹 4. Run Locally
-
+### 4️⃣ Launch Simulation
 ```bash
 python inference.py
 ```
 
 ---
 
-## 🐳 Docker Setup
+## 🐳 Docker Support
 
-### 🔹 Build Image
+Deploy your environment in seconds with Docker:
 
+**Build the image:**
 ```bash
 docker build -t data-repair-env .
 ```
 
----
-
-### 🔹 Run Container
-
+**Run the container:**
 ```bash
 docker run --env-file .env data-repair-env
 ```
 
 ---
 
-## 📊 Example Output
+## 📊 Evaluation Flow
 
+```mermaid
+graph TD
+    A[Environment Generates Task] --> B[LLM Observes Data]
+    B --> C[LLM Proposes Action]
+    C --> D[Grader Evaluates Action]
+    D --> E{Success?}
+    E -->|Yes| F[Reward 1.0]
+    E -->|Partial| G[Reward 0.5]
+    E -->|No| H[Reward 0.0]
 ```
-[START] task=easy ...
-[STEP] step=1 ...
-[END] success=true score=1.00
-```
 
 ---
 
-## 🧪 How It Works
+## 🧬 Design Philosophy
 
-1. Environment generates a task
-2. LLM suggests an action
-3. Grader evaluates response
-4. Reward is assigned
-5. Process repeats until completion
-
----
-
-## 🧠 Design Philosophy
-
-This project focuses on:
-
-* **Reinforcement-style learning environments**
-* **Reward shaping for AI behavior**
-* **Deterministic evaluation**
-* **Lightweight simulation (fast + reproducible)**
-
----
-
-## 🚀 Future Improvements
-
-* Larger datasets
-* Multi-table cleaning
-* Real-time data pipelines
-* Visualization dashboard
+- **Deterministic Evaluation**: Every reward is calculated by logic, not vibes.
+- **Reward Shaping**: Strategic partial rewards guide agents toward correct behaviors.
+- **Fast Simulation**: Lightweight enough for rapid experimentation and hackathons.
 
 ---
 
 ## 🏁 Conclusion
 
-This project demonstrates how AI agents can be trained and evaluated in a controlled environment for **data cleaning and decision-making tasks**.
+**Data Repair OpenEnv** is more than just a cleaning tool—it's a benchmark for the next generation of data-aware AI agents. 
 
-It is designed to be:
-
-* Scalable
-* Modular
-* Hackathon-ready
+Built for **scalability**, **modularity**, and **pixel-perfect evaluation**.
 
 ---
-
-## 🙌 Acknowledgment
-
-Built as part of a hackathon project focusing on:
-
-* AI environments
-* Data quality improvement
-* LLM-driven automation
-
----
-
-🔥 *Ready for deployment and evaluation*
+*Developed for the Advanced Agentic Coding Hackathon.*
