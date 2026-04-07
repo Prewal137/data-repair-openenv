@@ -72,7 +72,7 @@ data-repair-openenv/
 
 ### 1️⃣ Clone & Enter
 ```bash
-git clone <your-repo-link>
+git clone https://github.com/Prewal137/data-repair-openenv.git
 cd data-repair-openenv
 ```
 
@@ -143,4 +143,9 @@ graph TD
 Built for **scalability**, **modularity**, and **pixel-perfect evaluation**.
 
 ---
-*Developed for the Advanced Agentic Coding Hackathon.*
+## 📜 License
+This project is licensed under the **MIT License** - see the LICENSE file for details.
+
+---
+*Maintained by Prewal137.*
+
