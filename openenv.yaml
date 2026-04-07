@@ -1,0 +1,7 @@
+name: data_repair_env
+description: AI environment for dataset cleaning and repair with step-based rewards
+
+tasks:
+  - easy
+  - medium
+  - hard
